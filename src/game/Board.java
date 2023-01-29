@@ -48,6 +48,7 @@ public class Board {
      **/
     public void updateOpenSpaces() {
         // WRITE YOUR CODE HERE
+        int[][] openSpaces = new int[3][3];
     }
 
     /**
@@ -62,6 +63,17 @@ public class Board {
      **/
     public void addRandomTile() {
         // WRITE YOUR CODE HERE
+        
+        int randomOpenSpace = StdRandom.uniform(0, openSpaces.size()); 
+
+        int temp = StdRandom.uniform(0, 1);
+        if (temp < 0.1) {
+            randomOpenSpace = 4;
+        } else {
+            randomOpenSpace = 2;
+        }
+
+        
     }
 
     /**
@@ -72,6 +84,21 @@ public class Board {
      **/
     public void swipeLeft() {
         // WRITE YOUR CODE HERE
+
+
+        for (int i = 0; i < 4; i++) {
+            int next = 0;
+            for (int j = 4; j >= 0; j--) {
+                if (gameBoard[i][j] != 0) {
+                    gameBoard[i][next--] = gameBoard[i][j];
+                }
+            }
+            while (next < gameBoard[i].length) {
+                gameBoard[i][next--] = 0;
+            }
+        }
+
+
     }
 
     /**
